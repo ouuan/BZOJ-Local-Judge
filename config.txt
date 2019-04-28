@@ -1,8 +1,8 @@
 defaultTimeLimit 3000
 defaultMemoryLimit 512
-compileCommand  g++ <path>.cpp -o <path> -O2 -std=c++11 -Wl,--stack=536870912
+compileCommand  g++ "<path>.cpp" -o "<path>" -O2 -std=c++11 -Wl,--stack=536870912
 unZIPCommand WinRAR x <ZIPpath> <unZIPpath>
-downloadCommand IDMan /n /d <link> /p <path> /f <name>
+downloadCommand IDMan /n /d <link> /p "<path>" /f <name>
 BZOJusername xxxxxx
 BZOJpassword 123456qaq
 darkBZOJusername yyyyyy
