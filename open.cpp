@@ -79,8 +79,10 @@ int main(int argc, char* argv[])
 
     string problemid = argv[1];
     string pwd = getcwd(NULL, 0);
+    
+    puts(pwd.c_str());
 
-    if (argc == 2 || atoi(argv[2]) == 1) system(("start " + pwd + "\\problems\\" + problemid).c_str());
+    if (argc == 2 || atoi(argv[2]) == 1) system(("start \"\" " + quote(pwd + "\\problems\\" + problemid)).c_str());
     else
     {
         string path = pwd + "\\data\\" + problemid;
@@ -97,7 +99,7 @@ int main(int argc, char* argv[])
             unzip(quote(path), quote(pwd + "\\data"));
             while (_access((pwd + "\\data\\" + problemid).c_str(), 0) == -1);
         }
-        system(("start " + pwd + "\\data\\" + problemid).c_str());
+        system(("start \"\" " + quote(pwd + "\\data\\" + problemid)).c_str());
     }
 
     return 0;
