@@ -1,1 +1,6 @@
 /bzojch
+makedir.cpp
+*.exe
+judge.result
+debug.log
+.gitignore
