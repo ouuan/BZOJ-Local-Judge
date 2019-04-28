@@ -79,8 +79,6 @@ int main(int argc, char* argv[])
 
     string problemid = argv[1];
     string pwd = getcwd(NULL, 0);
-    
-    puts(pwd.c_str());
 
     if (argc == 2 || atoi(argv[2]) == 1) system(("start \"\" " + quote(pwd + "\\problems\\" + problemid)).c_str());
     else
