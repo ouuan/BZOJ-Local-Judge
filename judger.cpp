@@ -59,7 +59,9 @@ void run()
     
     si.hStdOutput = CreateFile(outputFile.c_str(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, 
 							   &sa, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-
+	
+	startTime = clock(); 
+	
     if (!CreateProcess(NULL, (char *)executableFile.c_str(), NULL, NULL, TRUE, HIGH_PRIORITY_CLASS | CREATE_NO_WINDOW, NULL, NULL, &si, &pi))
     {
         return;
@@ -71,6 +73,8 @@ void run()
 		GetExitCodeProcess(pi.hProcess, &dwExitCode);
 		returnValue = dwExitCode;
 	} while (returnValue == 259 && clock() - startTime <= timeLimit * 2);
+	
+	timeUsed = clock() - startTime;
     
     PROCESS_MEMORY_COUNTERS_EX info;
     ZeroMemory(&info, sizeof(info));
@@ -106,9 +110,7 @@ int main(int argc, char* argv[])
 		quote(checkerPath); 
 	}
 	
-	startTime = clock();
 	run();
-	timeUsed = clock() - startTime;
 	
 	if (timeUsed > timeLimit) resultID = 2;
 	else if (memoryUsed > memoryLimit * 1024 * 1024) resultID = 3;

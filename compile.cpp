@@ -1,4 +1,4 @@
-//compile <path>
+//compile <path> [option]
 
 #include <cstdlib>
 #include <fstream>
@@ -25,6 +25,8 @@ int main(int argc, char* argv[])
 		command.replace(p, 6, argv[1]);
 		p = command.find("<path>");
 	}
+	
+	if (argc >= 3) command += argv[2];
 	
 	return system(command.c_str());
 }

@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
 	if (argc < 2 || argc > 5)
 	{
 		puts("judge <problemid> [timeLimit [memoryLimit [checkerPath]]]");
-		return 0;
+		return 1;
 	}
 	
 	problemid = argv[1];
@@ -105,15 +105,27 @@ int main(int argc, char* argv[])
 	
 	if (argc >= 4) memoryLimit = argv[3];
 	
-	if (argc >= 5) checker = quote(argv[4]);
-	
 	string pwd = getcwd(NULL, 0);
 	string path = pwd + "\\data\\" + problemid;
+	
+	if (argc >= 5)
+	{
+		checker = quote(argv[4]);
+		if (checker == "1")
+		{
+			if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\checker") + " " + quote("-I " + pwd)).c_str()))
+			{
+				puts("Checker Compile Error!");
+				return 1;
+			}
+			checker = pwd + "\\problems\\" + problemid + "\\checker.exe";
+		}
+	}
     
     if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\" + problemid)).c_str()))
     {
     	puts("Compile Error!");
-    	return 0;
+    	return 1;
 	}
 	
 	if (_access(path.c_str(), 0) == -1)
@@ -139,7 +151,7 @@ int main(int argc, char* argv[])
     if (handle == -1)
     {
         puts("No data found!");
-        return 0;
+        return 1;
     }
     
     string executableFile = pwd + "\\problems\\" + problemid + "\\" + problemid + ".exe";

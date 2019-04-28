@@ -43,19 +43,21 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 `open <problemid> [type = 1]`：`type = 1` 时打开 `./problems/problemid`，`type = 2` 时打开 `./data/problemid`。打开数据时若数据不存在会自动下载 / 解压。
 
+#### 查看近期做题
+
+`view [number]`：显示修改时间最晚的 `number` 道题，若留空则显示所有近期做了的题（按修改时间降序）。
+
 #### 评测
 
-使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要 SPJ 时填第四个参数，需要与 `config.json` 中不同的时限、空间限制填第二、三个参数。评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）
+使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要 SPJ 时填第四个参数，若为 `1` 表示用 `./problems/problemid/checker.cpp`，否则使用所填路径作为 checker；需要与 `config.json` 中不同的时限、空间限制填第二、三个参数；评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）
 
-打开某个测试点数据及评测输出：`opendata <problemid> <testid>`。
+打开某个测试点数据及评测输出：`opentest <problemid> <testid>`。
 
 使用指定的源程序和输入输出答案文件进行评测：`judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]`。
 
 #### 对拍
 
-`dp <problemid> [generateCommand [checkerPath]]`：若 `generateCommand` 留空则使用 `./problems/problemid/generator.cpp` 生成数据（`generator.cpp` 应使用标准输入输出），否则使用 `generateCommand` 生成数据（`generateCommand` 应在 `./problems/problemid/dp.in` 生成数据），将 `problemid.cpp` 和 `std.cpp` 进行对拍，若 `checkerPath` 留空则使用 `fc` 来检查，否则使用 `checker`。
-
-`opendp <problemid>`：打开对拍的输入文件及源码和 std 的输出文件。
+`dp <problemid> [generateCommand [checkerPath]]`：若 `generateCommand` 留空则使用 `./problems/problemid/generator.cpp` 生成数据（`generator.cpp` 应使用标准输入输出），否则使用 `generateCommand` 生成数据（`generateCommand` 应在 `./problems/problemid/dp.in` 生成数据），将 `problemid.cpp` 和 `std.cpp` 进行对拍，若 `checkerPath` 留空则使用 `fc` 来检查，否则使用 `checker`，若 `checkerPath` 为 `1` 则使用 `./problems/problemid/checker.cpp` 作为 `checker`。
 
 #### 在 OJ 中打开题目
 
@@ -79,9 +81,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 2. 把 fork clone 到本地 / 直接在网页端修改。
 3. 提交 pull request。
 
-`tutorial <problemid>`：
-
-都请保存在 `./problems/problemid` 里，std 叫 `std.cpp`，generator 叫 `generator.cpp`（使用标准输入输出），题解形式随意，推荐使用 `tutorial.md`，也可以给网页的快捷方式（如果保存为 HTML 不影响观感推荐保存为 HTML）。
+都请保存在 `./problems/problemid` 里，std 叫 `std.cpp`，generator 叫 `generator.cpp`（使用标准输入输出），题解形式随意，推荐使用 `tutorial.md`，也可以放网页的快捷方式（如果保存为 HTML 不影响观感推荐保存为 HTML）。
 
 ## 使用项目
 
