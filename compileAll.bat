@@ -1,8 +1,9 @@
-g++ judger.cpp -o judger -lpsapi
-g++ judge.cpp -o judge
-g++ compile.cpp -o compile
-g++ open.cpp -o open
-g++ opentest.cpp -o opentest
-g++ dp.cpp -o dp
-g++ openbzoj.cpp -o openbzoj
-g++ opendarkbz.cpp -o opendarkbz
+g++ judger.cpp -o judger -lpsapi -std=c++11
+g++ judge.cpp -o judge -std=c++11
+g++ compile.cpp -o compile -std=c++11
+g++ dp.cpp -o dp -std=c++11
+g++ opendir.cpp -o opendir -std=c++11
+g++ opencpp.cpp -o opencpp -std=c++11
+g++ opentest.cpp -o opentest -std=c++11
+g++ openbzoj.cpp -o openbzoj -std=c++11
+g++ opendarkbz.cpp -o opendarkbz -std=c++11

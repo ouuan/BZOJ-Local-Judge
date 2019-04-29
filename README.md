@@ -39,9 +39,17 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 `username/password`：自动提交使用。
 
+#### 打开 cpp
+
+`opencpp <problemid>`：打开 `./problems/problemid/problemid.cpp`。若不存在则将 `./template.cpp` 拷贝到 `./problems/problemid/problemid.cpp` 并打开。
+
+#### 打开题面
+
+`statement <problemid>`：打开 `./problems/problemid/problemid.html`。
+
 #### 打开文件夹
 
-`open <problemid> [type = 1]`：`type = 1` 时打开 `./problems/problemid`，`type = 2` 时打开 `./data/problemid`。打开数据时若数据不存在会自动下载 / 解压。
+`opendir <problemid> [type = 1]`：`type = 1` 时打开 `./problems/problemid`，`type = 2` 时打开 `./data/problemid`。打开数据时若数据不存在会自动下载 / 解压。
 
 #### 查看近期做题
 
