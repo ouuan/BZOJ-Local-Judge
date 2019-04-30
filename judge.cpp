@@ -185,7 +185,9 @@ int main(int argc, char* argv[])
         }
     } while (_findnext(handle, &findData) == 0);
 	
-    ofstream res(pwd + "\\problems\\" + problemid + "\\judge.result");
+	path = pwd + "\\problems\\" + problemid + "\\judge.result";
+	
+    ofstream res(path);
 
     res.setf(ios_base::fixed);
     res.precision(2);
