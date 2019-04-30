@@ -4,7 +4,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 大约只会支持 Windows，只会支持 C++ 评测...
 
-## 使用说明（有的功能还没实现）
+## 使用说明
 
 ### 准备
 
@@ -45,13 +45,14 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 #### 打开题面
 
-`statement <problemid>`：打开 `./problems/problemid/problemid.html`。
+`openstatement <problemid>`：打开 `./problems/problemid/problemid.html`。
 
 #### 打开文件夹
 
-`opendir <problemid> [type = 1]`：`type = 1` 时打开 `./problems/problemid`，`type = 2` 时打开 `./data/problemid`。打开数据时若数据不存在会自动下载 / 解压。
+`opendir <problemid>`：打开 `./problems/problemid`。
+`opendata <problemid>`：打开 `./data/problemid`。若数据不存在会自动下载 & 解压。
 
-#### 查看近期做题
+#### 查看近期做题（暂未实现）
 
 `view [number]`：显示修改时间最晚的 `number` 道题，若留空则显示所有近期做了的题（按修改时间降序）。
 
@@ -61,7 +62,9 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 打开某个测试点数据及评测输出：`opentest <problemid> <testid>`。
 
-使用指定的源程序和输入输出答案文件进行评测：`judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]`。
+打开某道题未 AC 的数据中输入文件最小的：`openmin <problemid>`。
+
+使用指定的源程序和输入输出答案文件进行评测：`judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]`。结果在 `judger.result` 中。
 
 #### 对拍
 
@@ -73,7 +76,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 `opendarkbz <problemid>`：打开题目的 [darkBZOJ](https://darkbzoj.tk/) 页面。
 
-#### 在 OJ 上批量提交
+#### 在 OJ 上批量提交（暂未实现）
 
 需要安装 Python & selenium 库，需要一个 Google Chrome 浏览器，需要 [下载 chromedriver](http://npm.taobao.org/mirrors/chromedriver/) 并放在 Chrome 安装目录的 `Application` 文件夹内，需要在 `config.txt` 中填写用户名和密码。
 

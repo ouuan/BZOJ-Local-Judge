@@ -184,8 +184,8 @@ int main(int argc, char* argv[])
             remove("judger.result");
         }
     } while (_findnext(handle, &findData) == 0);
-
-    ofstream res("judge.result");
+	
+    ofstream res(pwd + "\\problems\\" + problemid + "\\judge.result");
 
     res.setf(ios_base::fixed);
     res.precision(2);
@@ -206,7 +206,7 @@ int main(int argc, char* argv[])
 
     res.close();
 
-    system("judge.result");
+    system(quote(path).c_str());
 
     return 0;
 }

@@ -1,4 +1,4 @@
-// statement <problemid>
+// openstatement <problemid>
 
 #include <direct.h>
 #include <cstdlib>
@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 {
     if (argc != 2)
     {
-        puts("statement <problemid>");
+        puts("openstatement <problemid>");
         return 1;
     }
 
