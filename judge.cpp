@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
             string anspath = pwd + "\\data\\" + problemid + "\\" + name + ".out";
             system(("judger " + quote(executableFile) + " " + quote(inpath) + " " + quote(outpath) + " " + quote(anspath)
                     + " " + quote(timeLimit) + " " + quote(memoryLimit) + " " + checker).c_str());
-            ifstream res("judger.result");
+            ifstream res("judger.out");
             int t;
             res >> t;
             result[name].resultid = t;
@@ -181,12 +181,12 @@ int main(int argc, char* argv[])
             result[name].memoryUsed = t;
             maxMemory = max(maxMemory, t);
             res.close();
-            remove("judger.result");
+            remove("judger.out");
         }
     } while (_findnext(handle, &findData) == 0);
-	
-	path = pwd + "\\problems\\" + problemid + "\\judge.result";
-	
+
+    path = pwd + "\\problems\\" + problemid + "\\judge.out";
+
     ofstream res(path);
 
     res.setf(ios_base::fixed);

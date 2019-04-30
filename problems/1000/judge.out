@@ -1,0 +1,19 @@
+Tests: 3 / 3
+maxTime: 0.01 s
+totalTime: 0.01 s
+maxMemory: 2.28 MiB
+
+Test 1
+result: Accepted
+timeUsed: 0.01 s
+memoryUsed: 2.28 MiB
+
+Test 2
+result: Accepted
+timeUsed: 0.00 s
+memoryUsed: 2.28 MiB
+
+Test 3
+result: Accepted
+timeUsed: 0.00 s
+memoryUsed: 2.28 MiB

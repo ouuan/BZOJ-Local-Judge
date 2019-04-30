@@ -12,7 +12,8 @@ resultID:
 	- 3 : Memory Limit Exceed
 	- 4 : Runtime Error
 
-judge.result:
+judger.out:
+
 ```
 resultID
 timeUsed
@@ -28,7 +29,6 @@ returnValue
 #include <psapi.h>
 #include <cstdio>
 #include <string>
-#include <ctime>
 
 using namespace std;
 
@@ -60,7 +60,12 @@ void run()
     si.hStdOutput = CreateFile(outputFile.c_str(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE, 
                                &sa, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-    startTime = clock(); 
+    PROCESS_MEMORY_COUNTERS_EX info;
+    ZeroMemory(&info, sizeof(info));
+    info.cb = sizeof(info);
+
+    FILETIME creationTime, exitTime, kernelTime, userTime;
+    SYSTEMTIME realTime;
 
     if (!CreateProcess(NULL, (char *)executableFile.c_str(), NULL, NULL, TRUE, HIGH_PRIORITY_CLASS | CREATE_NO_WINDOW, NULL, NULL, &si, &pi))
     {
@@ -72,17 +77,27 @@ void run()
     {
         GetExitCodeProcess(pi.hProcess, &dwExitCode);
         returnValue = dwExitCode;
-    } while (returnValue == 259 && clock() - startTime <= timeLimit * 2);
-
-    timeUsed = clock() - startTime;
-
-    PROCESS_MEMORY_COUNTERS_EX info;
-    ZeroMemory(&info, sizeof(info));
-    info.cb = sizeof(info);
-    GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
-    memoryUsed = info.PeakWorkingSetSize;
+        GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
+        FileTimeToSystemTime(&userTime, &realTime);
+        timeUsed = realTime.wMilliseconds
+            + realTime.wSecond * 1000
+            + realTime.wMinute * 60 * 1000
+            + realTime.wHour * 60 * 60 * 1000;
+        GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
+        memoryUsed = info.PeakWorkingSetSize;
+    } while (returnValue == 259 && timeUsed <= timeLimit * 2 && memoryUsed <= memoryLimit * 1024 * 1024 * 2);
 
     TerminateProcess(pi.hProcess, 0);
+
+    GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
+    FileTimeToSystemTime(&userTime, &realTime);
+    timeUsed = realTime.wMilliseconds
+        + realTime.wSecond * 1000
+        + realTime.wMinute * 60 * 1000
+        + realTime.wHour * 60 * 60 * 1000;
+
+    GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
+    memoryUsed = info.PeakWorkingSetSize;
 
     CloseHandle(pi.hProcess);
     CloseHandle(si.hStdInput);
@@ -127,7 +142,7 @@ int main(int argc, char* argv[])
         else resultID = 0;
     }
 
-    ofstream fout("judger.result");
+    ofstream fout("judger.out");
     fout << resultID << endl << timeUsed << endl << memoryUsed << endl << returnValue;
     fout.close();
 

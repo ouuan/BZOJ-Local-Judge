@@ -30,24 +30,24 @@ int main(int argc, char* argv[])
 
     string pwd = getcwd(NULL, 0);
     string testid, result;
-    
-    ifstream resin(pwd + "\\problems\\" + problemid + "\\judge.result");
-    
+
+    ifstream resin(pwd + "\\problems\\" + problemid + "\\judge.out");
+
     getline(resin, result);
     getline(resin, result);
     getline(resin, result);
     getline(resin, result);
     getline(resin, result);
-    
+
     while (resin >> result)
     {
-    	resin >> testid >> result;
-    	resin >> result;
-    	res[testid] = result;
-	    getline(resin, result);
-	    getline(resin, result);
-	    getline(resin, result);
-	}
+        resin >> testid >> result;
+        resin >> result;
+        res[testid] = result;
+        getline(resin, result);
+        getline(resin, result);
+        getline(resin, result);
+    }
 
     intptr_t handle;
     _finddata_t findData;
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
         puts("No data found!");
         return 1;
     }
-    
+
     unsigned int minSize = 0x7fffffff;
     string minTest;
 
@@ -71,18 +71,18 @@ int main(int argc, char* argv[])
             name = name.substr(0, p);
             if (res[name] != "Accepted" && findData.size < minSize)
             {
-            	minSize = findData.size;
-            	minTest = name;
-			}
+                minSize = findData.size;
+                minTest = name;
+            }
         }
     } while (_findnext(handle, &findData) == 0);
-    
+
     if (minTest == "")
     {
-    	puts("You have already got an AC!");
-    	return 1;
-	}
-    
+        puts("You have already got an AC!");
+        return 1;
+    }
+
     system(quote(pwd + "\\data\\" + problemid + "\\" + minTest + ".in").c_str());
     system(quote(pwd + "\\problems\\" + problemid + "\\" + minTest + ".out").c_str());
     system(quote(pwd + "\\data\\" + problemid + "\\" + minTest + ".out").c_str());
