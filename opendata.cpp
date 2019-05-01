@@ -15,7 +15,7 @@ string quote(const string & s)
 
 void unzip(const string & ZIPpath, const string & unZIPpath)
 {
-    ifstream config("config.txt");
+    ifstream config("config.ini");
     string command;
     getline(config, command);
     getline(config, command);
@@ -39,7 +39,7 @@ void unzip(const string & ZIPpath, const string & unZIPpath)
 
 void download(const string & link, const string & path, const string & name)
 {
-    ifstream config("config.txt");
+    ifstream config("config.ini");
     string command;
     getline(config, command);
     getline(config, command);

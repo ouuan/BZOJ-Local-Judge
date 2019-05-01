@@ -11,12 +11,12 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 1. `git clone https://github.com/ouuan/BZOJLocalJudge.git`
 2. [下载 BZOJ 数据](http://darkbzoj.tk/blogof/root/blog/10)（也可以需要时再自动下载）
 3. 编译根目录下所有 cpp 文件（可以使用 `compileAll.bat`）（若 `judger.cpp` 编译失败请尝试在编译命令中加上 `-lpsapi`）
-4. 在 `config.txt` 中进行设置。
+4. 在 `config.ini` 中进行设置。
 5. 确保 `.in` 和 `.out` 设置了默认打开方式。
 
 ### 文件路径
 
-1. 各项设置位于根目录下的 `config.json` 里。
+1. 各项设置位于根目录下的 `config.ini` 里。
 2. 数据存放在 `./data/problemid(.zip)` 里，文件夹内为 `testid.in` / `testid.out`，压缩包内为名为 `problemid` 的文件夹。
 3. 题面存放在 `./problems/problemid/problemid.html` 里。
 4. 源码、std、generator、checker、题解都放在 `./problems/problemid` 里，文件名分别为 `problemid.cpp`, `std.cpp`, `generator.cpp`, `checker.cpp`, `tutorial.*`。
@@ -55,7 +55,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 #### 评测
 
-使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要 SPJ 时填第四个参数，若为 `1` 表示用 `./problems/problemid/checker.cpp`，否则使用所填路径作为 checker；需要与 `config.json` 中不同的时限、空间限制填第二、三个参数；评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）结果保存在 `./problems/problemid/judge.out` 中，并在评测完成时自动打开。
+使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要 SPJ 时填第四个参数，若为 `1` 表示用 `./problems/problemid/checker.cpp`，否则使用所填路径作为 checker；需要与 `config.ini` 中不同的时限、空间限制填第二、三个参数；评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）结果保存在 `./problems/problemid/judge.out` 中，并在评测完成时自动打开。
 
 打开某个测试点数据及评测输出：`opentest <problemid> <testid>`。
 
@@ -83,7 +83,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 #### 在 OJ 上批量提交（暂未实现）
 
-需要安装 Python & selenium 库，需要一个 Google Chrome 浏览器，需要 [下载 chromedriver](http://npm.taobao.org/mirrors/chromedriver/) 并放在 Chrome 安装目录的 `Application` 文件夹内，需要在 `config.txt` 中填写用户名和密码。
+需要安装 Python & selenium 库，需要一个 Google Chrome 浏览器，需要 [下载 chromedriver](http://npm.taobao.org/mirrors/chromedriver/) 并放在 Chrome 安装目录的 `Application` 文件夹内，需要在 `config.ini` 中填写用户名和密码。
 
 `python submitbzoj.py [day]`：在 BZOJ 上自动提交 `problems` 文件夹下所有（修改时间在 day 天之前的）和题目 id 同名的代码。
 

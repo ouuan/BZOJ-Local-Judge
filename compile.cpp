@@ -6,7 +6,7 @@
 
 using namespace std;
 
-ifstream config("config.txt");
+ifstream config("config.ini");
 string command;
 
 int main(int argc, char* argv[])
