@@ -14,7 +14,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 6. `judge 1000`
 7. 获得评测结果！
 
-详细使用说明及更多功能，请阅读 [使用说明](GUIDEBOOK.md)。
+详细使用说明及更多功能，请阅读[使用说明](GUIDEBOOK.md)。
 
 ## 贡献本项目
 
