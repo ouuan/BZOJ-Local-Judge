@@ -32,13 +32,13 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 `defaultMemoryLimit`：默认空间限制，以 `MiB` 为单位。
 
-`compileCommand`：编译命令，提供 `<path>` 表示源代码路径（不含 `.cpp`）。输出文件应为 `<path>.exe`。
+`compileCommand`：编译命令，提供 `<path>` 表示源代码路径（不含 `.cpp`，不带引号，为了防止路径中含空格需要在 `<path>` 两端加上引号）。输出文件（`-o`）应为 `<path>.exe`。
 
-`unZIPCommand `：解压命令，提供 `<ZIPpath>` 表示 zip 路径（包含 `.zip`），`<unZIPpath>` 表示解压路径。
+`unZIPCommand `：解压命令，提供 `<ZIPpath>` 表示zip 路径（包含 `.zip`，带引号，无需再加引号），`<unZIPpath>` 表示解压路径（带引号）。注意设置环境变量，确保自己在 cmd 中可以使用填入的命令下载。
 
-`downloadCommand `： 用于自动下载数据，提供 `<link>` 表示下载地址，`<path>` 表示保存路径（不含文件名），`<name>` 表示保存文件名。
+`downloadCommand `： 用于自动下载数据，提供 `<id>` 表示题目 id，`<path>` 表示保存路径（不含文件名 `id.zip`，带引号）。注意设置环境变量，确保自己在 cmd 中可以使用填入的命令解压。
 
-`username/password`：自动提交使用。
+`username/password`：自动提交使用。**暂未实现该功能。**
 
 #### 打开 cpp
 
@@ -99,8 +99,10 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 建议的话，只要能为做题带来哪怕一丁点的方便，都可以提出来。
 
-## 使用项目
+## 参考 / 使用的一些项目
 
 [Ruanxingzhi / bzojch](https://github.com/Ruanxingzhi/bzojch)（[应该是允许他人使用的](https://github.com/Ruanxingzhi/bzojch/issues/2)）
 
 [Sojiv / Project_lemon](https://github.com/Sojiv/Project_lemon)（评测部分借鉴了一下，复制了几句代码。原代码是基于 GPL-3.0 开源协议的。）
+
+[MikeMirzayanov / testlib](https://github.com/MikeMirzayanov/testlib)（把 `testlib.h` 放进来了，用于编译 checker）

@@ -40,7 +40,7 @@ void unzip(const string & ZIPpath, const string & unZIPpath)
     system(command.c_str());
 }
 
-void download(const string & link, const string & path, const string & name)
+void download(const string & id, const string & path)
 {
     ifstream config("config.ini");
     string command;
@@ -50,23 +50,17 @@ void download(const string & link, const string & path, const string & name)
     getline(config, command);
     getline(config, command, ' ');
     getline(config, command);
-    int p = command.find("<link>");
+    int p = command.find("<id>");
     while (p < command.size())
     {
-        command.replace(p, 6, link);
-        p = command.find("<link>");
+        command.replace(p, 4, id);
+        p = command.find("<id>");
     }
     p = command.find("<path>");
     while (p < command.size())
     {
         command.replace(p, 6, path);
         p = command.find("<path>");
-    }
-    p = command.find("<name>");
-    while (p < command.size())
-    {
-        command.replace(p, 6, name);
-        p = command.find("<name>");
     }
     system(command.c_str());
 }
@@ -134,7 +128,7 @@ int main(int argc, char* argv[])
         if (_access(path.c_str(), 0) == -1)
         {
             puts("downloading...");
-            download("https://lydsy.download/archive/" + problemid + ".zip", quote(pwd + "\\data"), problemid + ".zip");
+            download(problemid, quote(pwd + "\\data"));
         }
         while (_access(path.c_str(), 0) == -1);
         puts("unzipping...");
