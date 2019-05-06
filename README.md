@@ -4,7 +4,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 大约只会支持 Windows，只会支持 C++ 评测...
 
-## QUICK START
+## Getting Started
 
 1. 输入命令 `git clone https://github.com/ouuan/BZOJLocalJudge.git`
 2. 运行 `compileAll.bat`

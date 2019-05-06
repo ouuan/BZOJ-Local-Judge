@@ -64,19 +64,3 @@
 `openbzoj <problemid>`：打开题目的 [BZOJ](https://www.lydsy.com/JudgeOnline/) 页面。
 
 `opendarkbz <problemid>`：打开题目的 [darkBZOJ](https://darkbzoj.tk/) 页面。
-
-#### 查看近期做题（暂未实现）
-
-`recent [number]`：显示修改时间最晚的 `number` 道题，若留空则显示所有做了的题（按修改时间降序）。
-
-#### 清除近期做题（暂未实现）
-
-`clear [day [deletezip]] `：删除 `problemid.cpp` 的修改时间在 day 天之前（留空则为全部）的题目的解压后数据以及评测结果和 exe，若第二个参数留空则不删除压缩包，为 0 则只删除压缩包（和评测结果 & exe），为 1 则同时删除压缩包（和解压后数据以及评测结果 & exe）。
-
-#### 在 OJ 上批量提交（暂未实现）
-
-~~需要安装 Python & selenium 库，需要一个 Google Chrome 浏览器，需要 [下载 chromedriver](http://npm.taobao.org/mirrors/chromedriver/) 并放在 Chrome 安装目录的 `Application` 文件夹内，需要在 `config.ini` 中填写用户名和密码。~~ 实现方式待定。
-
-`python submitbzoj.py [day]`：在 BZOJ 上自动提交 `problems` 文件夹下所有（修改时间在 day 天之前的）和题目 id 同名的代码。
-
-`python submitdarkbz.py [day]`：同上，在 darkBZOJ 上提交。
