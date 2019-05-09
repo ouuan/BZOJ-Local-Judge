@@ -8,9 +8,9 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 **追求极致的便捷。**
 
-如果你需要一个稳定通用的比赛评测姬，可以使用 [Lemon](https://github.com/Sojiv/Project_lemon)。
+如果你需要一个稳定通用的比赛评测姬，可以使用 Lemon。
 
-如果你需要一个既简洁又通用的评测姬，可以使用 [icey](https://github.com/Edgration/icey)。
+如果你需要一个既简洁又通用的评测姬，可以使用 icey。
 
 如果你需要一个便捷的 BZOJ 刷题平台，使用本项目就对了。
 
