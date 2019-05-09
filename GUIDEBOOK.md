@@ -47,7 +47,7 @@
 
 #### 评测
 
-使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要 SPJ 时填第四个参数，若为 `1` 表示用 `./problems/problemid/checker.cpp`，否则使用所填路径作为 checker；需要与 `config.ini` 中不同的时限、空间限制填第二、三个参数；评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）结果保存在 `./problems/problemid/judge.out` 中，并在评测完成时自动打开。
+使用 `./problems/problemid/problemid.cpp` 作为源文件、使用 `./data/problemid(.zip)` 里的数据进行评测： `judge <problemid> [timeLimit [memoryLimit [checkerPath]]]`。（需要与 `config.ini` 中不同的时限、空间限制填第二、三个参数；需要 SPJ 时填第四个参数，若为 `1` 表示用 `./problems/problemid/checker.cpp` 作为 checker 且自动编译，否则使用所填 **exe** 作为 checker；评测时优先使用 `data` 内已解压数据，其次使用未解压数据，仍没有则尝试自动下载数据。）结果保存在 `./problems/problemid/judge.out` 中，并在评测完成时自动打开。
 
 打开某个测试点数据及评测输出：`opentest <problemid> <testid>`。
 
