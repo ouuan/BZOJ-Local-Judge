@@ -30,7 +30,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 ### 通过 pull request 补充 std / chekcer / generator / 题解
 
-都请保存在 `./problems/problemid` 里，std 叫 `std.cpp`，generator 叫 `generator.cpp`（使用标准输入输出），题解形式随意，推荐使用 `tutorial.md`，也可以放网页的快捷方式（如果保存为 HTML 不影响观感推荐保存为 HTML）。
+都请保存在 `./problems/problemid` 里，std 叫 `std.cpp`，generator 叫 `gen.cpp`（使用标准输入输出），题解形式随意，推荐使用 `tutorial.md`，也可以放网页的快捷方式（如果保存为 HTML 不影响观感推荐保存为 HTML）。
 
 ~~这一项可能要永久咕咕。~~
 

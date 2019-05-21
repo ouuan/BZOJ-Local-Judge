@@ -13,7 +13,7 @@
 1. 各项设置位于根目录下的 `config.ini` 里。
 2. 数据存放在 `./data/problemid(.zip)` 里，文件夹内为 `testid.in` / `testid.out`，压缩包内为名为 `problemid` 的文件夹。
 3. 题面存放在 `./problems/problemid/problemid.html` 里。
-4. 源码、std、generator、checker、题解都放在 `./problems/problemid` 里，文件名分别为 `problemid.cpp`, `std.cpp`, `generator.cpp`, `checker.cpp`, `tutorial.*`。
+4. 源码、std、generator、checker、题解都放在 `./problems/problemid` 里，文件名分别为 `problemid.cpp`, `std.cpp`, `gen.cpp`, `checker.cpp`, `tutorial.*`。
 5. 评测、对拍时的输出也放在 `./problems/problemid` 里，分别叫 `problemid-testid.out` 和 `problemid.out`。
 
 ### 使用方法
@@ -57,7 +57,7 @@
 
 #### 对拍
 
-`dp <problemid> [generateCommand [checkerPath]]`：若 `generateCommand` 留空则使用 `./problems/problemid/generator.cpp` 生成数据（`generator.cpp` 应使用标准输入输出），否则使用 `generateCommand` 生成数据（`generateCommand` 应在 `./problems/problemid/dp.in` 生成数据），将 `problemid.cpp` 和 `std.cpp` 进行对拍，若 `checkerPath` 留空则使用 `fc` 来检查，否则使用 `checker`，若 `checkerPath` 为 `1` 则使用 `./problems/problemid/checker.cpp` 作为 `checker`。
+`dp <problemid> [generateCommand [checkerPath]]`：若 `generateCommand` 留空则使用 `./problems/problemid/gen.cpp` 生成数据（`gen.cpp` 应使用标准输入输出），否则使用 `generateCommand` 生成数据（`generateCommand` 应在 `./problems/problemid/dp.in` 生成数据），将 `problemid.cpp` 和 `std.cpp` 进行对拍，若 `checkerPath` 留空则使用 `fc` 来检查，否则使用 `checker`，若 `checkerPath` 为 `1` 则使用 `./problems/problemid/checker.cpp` 作为 `checker`。
 
 #### 在 OJ 中打开题目
 

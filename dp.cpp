@@ -29,12 +29,12 @@ int main(int argc, char* argv[])
     if (argc >= 3) generateCommand = argv[2];
     else
     {
-        if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\generator")).c_str()))
+        if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\gen")).c_str()))
         {
             puts("Generator Compile Error!");
             return 1;
         }
-        generateCommand = "call " + quote(pwd + "\\problems\\" + problemid + "\\generator.exe") +
+        generateCommand = "call " + quote(pwd + "\\problems\\" + problemid + "\\gen.exe") +
             " > " + quote(pwd + "\\problems\\" + problemid + "\\dp.in");
     }
 
