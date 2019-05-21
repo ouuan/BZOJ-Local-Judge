@@ -1,27 +1,27 @@
 /*
 
-        judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]
+judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]
 
-        timeLimit: ms
-        memoryLimit: MiB
+timeLimit: ms
+memoryLimit: MiB
 
-        resultID:
-            - 0 : Accepted
-            - 1 : Wrong Answer
-            - 2 : Time Limit Exceed
-            - 3 : Memory Limit Exceed
-            - 4 : Runtime Error
+resultID:
+    - 0 : Accepted
+    - 1 : Wrong Answer
+    - 2 : Time Limit Exceed
+    - 3 : Memory Limit Exceed
+    - 4 : Runtime Error
 
-        judger.out:
+judger.out:
 
-        ```
-        resultID
-        timeUsed
-        memoryUsed
-        returnValue
-        ```
+```
+resultID
+timeUsed
+memoryUsed
+returnValue
+```
 
-        */
+*/
 
 #include <windows.h>
 #include <fstream>
