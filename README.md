@@ -46,7 +46,7 @@ A：会自动替换的，留着就好。
 
 Q：为什么我运行时显示一堆”不是内部或外部命令，也不是可运行的程序“？
 
-A：先检查你有没有编译主目录下的代码（或者运行 `compileAll.bat`）。如果已经编译了，要么是你没有修改 `config.ini`（比如，没装 IDM，应该修改下载命令），要么是你没有设置相应的环境变量。没设置环境变量的解决方法有两种，一种是把 g++、IDM、WinRAR 等程序所在路径加入环境变量 Path 中，另一种是在 `config.ini` 中把程序名替换为完整路径，如果路径带空格需要两端加引号并在前面加上 `call`。例如：`unZIPCommand call "C:\Program Files\WinRAR" x <ZIPpath> <unZIPpath>`。
+A：先检查你有没有编译主目录下的代码（或者运行 `compileAll.bat`）。如果已经编译了，要么是你没有修改 `config.ini`（比如，没装 IDM，应该修改下载命令），要么是你没有设置相应的环境变量。没设置环境变量的解决方法有两种，一种是把 g++、IDM、WinRAR 等程序所在路径加入环境变量 Path 中，另一种是在 `config.ini` 中把程序名替换为完整路径，如果路径带空格需要两端加引号并在前面加上 `call`。例如：`unZIPCommand call "C:\Program Files\WinRAR" x "<path>\<id>.zip" "<path>\"`。
 
 Q：为什么主目录下的代码（用 `compileAll.bat` 编译的那些）我手动编译报错？
 
