@@ -1,27 +1,27 @@
 /*
 
-judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]
+        judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]
 
-timeLimit: ms
-memoryLimit: MiB
+        timeLimit: ms
+        memoryLimit: MiB
 
-resultID:
-	- 0 : Accepted
-	- 1 : Wrong Answer
-	- 2 : Time Limit Exceed
-	- 3 : Memory Limit Exceed
-	- 4 : Runtime Error
+        resultID:
+            - 0 : Accepted
+            - 1 : Wrong Answer
+            - 2 : Time Limit Exceed
+            - 3 : Memory Limit Exceed
+            - 4 : Runtime Error
 
-judger.out:
+        judger.out:
 
-```
-resultID
-timeUsed
-memoryUsed
-returnValue
-```
+        ```
+        resultID
+        timeUsed
+        memoryUsed
+        returnValue
+        ```
 
-*/
+        */
 
 #include <windows.h>
 #include <fstream>
@@ -67,7 +67,7 @@ void run()
 
     FILETIME creationTime, exitTime, kernelTime, userTime;
     SYSTEMTIME realTime;
-    
+
     int startTime = clock();
 
     if (!CreateProcess(NULL, (char *)executableFile.c_str(), NULL, NULL, TRUE, HIGH_PRIORITY_CLASS | CREATE_NO_WINDOW, NULL, NULL, &si, &pi))
@@ -83,16 +83,16 @@ void run()
         GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
         FileTimeToSystemTime(&userTime, &realTime);
         timeUsed = realTime.wMilliseconds
-            	 + realTime.wSecond * 1000
-            	 + realTime.wMinute * 60 * 1000
-            	 + realTime.wHour * 60 * 60 * 1000;
+            + realTime.wSecond * 1000
+            + realTime.wMinute * 60 * 1000
+            + realTime.wHour * 60 * 60 * 1000;
         GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
         memoryUsed = info.PeakWorkingSetSize;
         if (clock() - startTime > timeLimit * 4)
         {
-        	resultID = 2;
-        	break;
-		}
+            resultID = 2;
+            break;
+        }
     } while (returnValue == 259 && memoryUsed <= memoryLimit * 1024 * 1024 * 2 && timeUsed <= timeLimit * 2);
 
     TerminateProcess(pi.hProcess, 0);
@@ -100,9 +100,9 @@ void run()
     GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
     FileTimeToSystemTime(&userTime, &realTime);
     timeUsed = realTime.wMilliseconds
-        	 + realTime.wSecond * 1000
-        	 + realTime.wMinute * 60 * 1000
-        	 + realTime.wHour * 60 * 60 * 1000;
+        + realTime.wSecond * 1000
+        + realTime.wMinute * 60 * 1000
+        + realTime.wHour * 60 * 60 * 1000;
 
     GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
     memoryUsed = info.PeakWorkingSetSize;

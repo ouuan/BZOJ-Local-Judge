@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
         checker = argv[4];
         if (checker == "1")
         {
-			if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\checker") + " " + quote(" -I \\\"" + pwd + "\\\"")).c_str()))
+            if (system(("compile " + quote(pwd + "\\problems\\" + problemid + "\\checker") + " " + quote(" -I \\\"" + pwd + "\\\"")).c_str()))
             {
                 puts("Checker Compile Error!");
                 return 1;
