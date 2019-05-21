@@ -46,7 +46,7 @@ A：会自动替换的，留着就好。
 
 Q：为什么我运行时显示一堆”不是内部或外部命令，也不是可运行的程序“？
 
-A：因为你没有设置相应的环境变量。解决方法有两种，一种是把 g++、IDM、WinRAR 等程序所在路径加入环境变量 Path 中，另一种是在 `config.ini` 中把程序名替换为两端带引号的完整路径，并在前面加上 call。例如：`unZIPCommand call "C:\Program Files\WinRAR" x <ZIPpath> <unZIPpath>`。
+A：要么是你没有修改 `config.ini`（比如，没装 IDM，应该修改下载命令），要么是你没有设置相应的环境变量。没设置环境变量的解决方法有两种，一种是把 g++、IDM、WinRAR 等程序所在路径加入环境变量 Path 中，另一种是在 `config.ini` 中把程序名替换为两端带引号的完整路径，并在前面加上 call。例如：`unZIPCommand call "C:\Program Files\WinRAR" x <ZIPpath> <unZIPpath>`。
 
 Q：为什么主目录下的代码（用 `compileAll.bat` 编译的那些）我手动编译报错？
 
@@ -54,7 +54,7 @@ A：需要 C++11 才能正常编译，其中 `judger` 需要在编译选项中�
 
 Q：你这个东西并不便捷啊。
 
-A：您好，只要花上不到五分钟配置一下，再熟悉一下命令，应该就足够方便了。尤其是没网的时候，比其它本地测评软件应该方便得多。如果真的遇到了什么问题，或者是有什么建议，欢迎在 [Issues](/issues) 中提出。
+A：您好，只要花上不到五分钟配置一下，再熟悉一下命令，应该就足够方便了。尤其是没网的时候，比其它本地测评软件应该方便得多。如果真的遇到了什么问题，或者是有什么建议，欢迎在 [Issues](https://github.com/ouuan/BZOJLocalJudge/issues) 中提出。
 
 ## 参考 / 使用的一些项目
 
