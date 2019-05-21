@@ -12,7 +12,7 @@ BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库
 
 如果你需要一个既简洁又通用的评测姬，可以使用 icey。
 
-如果你需要一个便捷的 BZOJ 刷题平台，使用本项目就对了。
+如果你需要一个便捷的 OJ 刷题平台，使用本项目就对了。
 
 ## Getting Started
 
@@ -55,6 +55,17 @@ A：需要 C++11 才能正常编译，其中 `judger` 需要在编译选项中�
 Q：你这个东西并不便捷啊。
 
 A：您好，只要花上不到五分钟配置一下，再熟悉一下命令，应该就足够方便了。尤其是没网的时候，比其它本地测评软件应该方便得多。如果真的遇到了什么问题，或者是有什么建议，欢迎在 [Issues](https://github.com/ouuan/BZOJLocalJudge/issues) 中提出。
+
+## 应用于其它 OJ ？
+
+把 BZOJ 题面删掉（或者放着不管），然后改一下 `config.ini`，就可以用于其它 OJ 了。
+
+Example：（[LOJ](https://loj.ac/)）
+
+```
+unZIPCommand WinRAR x "<path>\<id>.zip" "<path>\<id>\"
+downloadCommand IDMan /n /d https://loj.ac/problem/<id>/testdata/download /p <path> /f <id>.zip
+```
 
 ## 参考 / 使用的一些项目
 

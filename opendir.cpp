@@ -21,8 +21,11 @@ int main(int argc, char* argv[])
 
     string problemid = argv[1];
     string pwd = getcwd(NULL, 0);
+    string path = quote(pwd + "\\problems\\" + problemid);
 
-    system(("start \"\" " + quote(pwd + "\\problems\\" + problemid)).c_str());
+    if (_access(path.c_str(), 0) == -1) system(("mkdir " + path).c_str());
+
+    system(("start \"\" " + path).c_str());
 
     return 0;
 }
