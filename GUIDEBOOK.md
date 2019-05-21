@@ -53,7 +53,7 @@
 
 打开某道题未 AC 的测试点中输入文件最小的：`openmin <problemid>`。
 
-使用指定的源程序和输入输出答案文件进行评测：`judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]`。结果在 `judger.out` 中。
+使用指定的源程序和输入输出答案文件进行评测：`judger <executableFile> <inputFile> <outputFile> <answerFile> <timeLimit> <memoryLimit> [checkerPath]`。结果在 `judger.out` 中。评测时，出现以下情况将会强制终止程序：1. 使用内存超过限制的 2 倍；2. realTime 超过时限的 2 倍；3. 评测姬运行时间超过时限的 4 倍。这里解释一下，realTime 能够比较准确地描述程序用时，但有时会出现程序运行时间远大于 realTime 的情况，会造成评测卡壳的现象，因此同时会用 `clock()` 函数获取评测姬运行时间，超过时限 4 倍则强制终止程序。（之前我在广二集训的时候好像听人吐槽过用时小于时限 TLE，就是这样解释的。）
 
 #### 对拍
 

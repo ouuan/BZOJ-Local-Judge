@@ -29,11 +29,12 @@ returnValue
 #include <psapi.h>
 #include <cstdio>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
 string executableFile, inputFile, outputFile, answerFile, checkerPath;
-int timeLimit, memoryLimit, returnValue = -1, startTime, timeUsed, memoryUsed, resultID; 
+int timeLimit, memoryLimit, returnValue = -1, timeUsed, memoryUsed, resultID; 
 bool hasChecker;
 
 void quote(string & s)
@@ -66,6 +67,8 @@ void run()
 
     FILETIME creationTime, exitTime, kernelTime, userTime;
     SYSTEMTIME realTime;
+    
+    int startTime = clock();
 
     if (!CreateProcess(NULL, (char *)executableFile.c_str(), NULL, NULL, TRUE, HIGH_PRIORITY_CLASS | CREATE_NO_WINDOW, NULL, NULL, &si, &pi))
     {
@@ -80,21 +83,26 @@ void run()
         GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
         FileTimeToSystemTime(&userTime, &realTime);
         timeUsed = realTime.wMilliseconds
-            + realTime.wSecond * 1000
-            + realTime.wMinute * 60 * 1000
-            + realTime.wHour * 60 * 60 * 1000;
+            	 + realTime.wSecond * 1000
+            	 + realTime.wMinute * 60 * 1000
+            	 + realTime.wHour * 60 * 60 * 1000;
         GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
         memoryUsed = info.PeakWorkingSetSize;
-    } while (returnValue == 259 && timeUsed <= timeLimit * 2 && memoryUsed <= memoryLimit * 1024 * 1024 * 2);
+        if (clock() - startTime > timeLimit * 4)
+        {
+        	resultID = 2;
+        	break;
+		}
+    } while (returnValue == 259 && memoryUsed <= memoryLimit * 1024 * 1024 * 2 && timeUsed <= timeLimit * 2);
 
     TerminateProcess(pi.hProcess, 0);
 
     GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
     FileTimeToSystemTime(&userTime, &realTime);
     timeUsed = realTime.wMilliseconds
-        + realTime.wSecond * 1000
-        + realTime.wMinute * 60 * 1000
-        + realTime.wHour * 60 * 60 * 1000;
+        	 + realTime.wSecond * 1000
+        	 + realTime.wMinute * 60 * 1000
+        	 + realTime.wHour * 60 * 60 * 1000;
 
     GetProcessMemoryInfo(pi.hProcess, (PROCESS_MEMORY_COUNTERS*)&info, sizeof(info));
     memoryUsed = info.PeakWorkingSetSize;
@@ -127,7 +135,7 @@ int main(int argc, char* argv[])
 
     run();
 
-    if (timeUsed > timeLimit) resultID = 2;
+    if (resultID == 2 || timeUsed > timeLimit) resultID = 2;
     else if (memoryUsed > memoryLimit * 1024 * 1024) resultID = 3;
     else if (returnValue != 0) resultID = 4;
     else
