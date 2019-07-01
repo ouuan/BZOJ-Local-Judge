@@ -26,6 +26,7 @@ returnValue
 #include <windows.h>
 #include <fstream>
 #include <cstdlib>
+#include <csignal>
 #include <psapi.h>
 #include <cstdio>
 #include <string>
@@ -40,6 +41,15 @@ bool hasChecker;
 void quote(string & s)
 {
     s = "\"" + s + "\"";
+}
+
+HANDLE hProcess;
+bool programIsOpen;
+
+void signalHandler(int signum)
+{
+    if (programIsOpen) TerminateProcess(hProcess, 0);
+    exit(signum);
 }
 
 void run()
@@ -75,6 +85,10 @@ void run()
         return;
     }
 
+    hProcess = pi.hProcess;
+    programIsOpen = true;
+    signal(SIGINT, signalHandler);
+
     DWORD dwExitCode;
     do
     {
@@ -96,6 +110,7 @@ void run()
     } while (returnValue == 259 && memoryUsed <= memoryLimit * 1024 * 1024 * 2 && timeUsed <= timeLimit * 2);
 
     TerminateProcess(pi.hProcess, 0);
+    programIsOpen = false;
 
     GetProcessTimes(pi.hProcess, &creationTime, &exitTime, &kernelTime, &userTime);
     FileTimeToSystemTime(&userTime, &realTime);
