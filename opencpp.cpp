@@ -2,6 +2,7 @@
 
 #include <direct.h>
 #include <cstdlib>
+#include <fstream>
 #include <string>
 #include <io.h>
 
@@ -29,11 +30,21 @@ int main(int argc, char* argv[])
         system(("mkdir " + quote(path)).c_str());
     }
 
-    path += "\\" + problemid + ".cpp"; 
+    path += "\\" + problemid + ".cpp";
+    
+    ifstream config("config.ini");
+    string s;
+    getline(config, s);
+    getline(config, s);
+    getline(config, s);
+    getline(config, s);
+    getline(config, s);
+    getline(config, s, ' ');
+    getline(config, s);
 
     if (_access(path.c_str(), 0) == -1)
     {
-        system(("copy template.cpp " + quote(path)).c_str());
+        system(("copy " + quote(s) + " " + quote(path)).c_str());
     }
 
     system(("start \"\" " + quote(path)).c_str());

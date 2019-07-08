@@ -32,6 +32,8 @@
 
 `downloadCommand `： 用于自动下载数据，提供 `<id>` 表示题目 id，`<path>` 表示保存路径（不含保存的文件名 ，带引号）。注意设置环境变量，确保自己在 cmd 中可以使用填入的命令解压。
 
+`templatePath`：使用 `opencpp` 命令时会使用这个文件作为模板。路径无需加引号。
+
 #### 打开 cpp
 
 `opencpp <problemid>`：打开 `./problems/problemid/problemid.cpp`。若不存在则将 `./template.cpp` 拷贝到 `./problems/problemid/problemid.cpp` 并打开。
