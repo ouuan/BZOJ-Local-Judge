@@ -3,7 +3,7 @@
 ### 准备
 
 1. `git clone https://github.com/ouuan/BZOJLocalJudge.git`
-2. [下载 BZOJ 数据](https://darkbzoj.tk/data/)（也可以需要时再自动下载）
+2. [下载 BZOJ 数据](http://wwwwodddd.com/lydsy/)（也可以需要时再自动下载）
 3. 编译根目录下所有 cpp 文件（可以使用 `compileAll.bat`）（若 `judger.cpp` 编译失败请尝试在编译命令中加上 `-lpsapi`）
 4. 在 `config.ini` 中进行设置。
 5. 确保 `.in` 和 `.out` 设置了默认打开方式。
