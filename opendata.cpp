@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
         if (_access(path.c_str(), 0) == -1)
         {
             puts("downloading...");
-            download(problemid, pwd + "\\data");
+            download(problemid, quote(pwd + "\\data"));
         }
         while (_access(path.c_str(), 0) == -1);
         Sleep(100);
