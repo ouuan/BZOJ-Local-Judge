@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <windows.h>
+#include <iostream>
 #include <direct.h>
 #include <fstream>
 #include <cstdlib>
@@ -163,6 +164,22 @@ int main(int argc, char* argv[])
             string inpath = pwd + "\\data\\" + problemid + "\\" + name + ".in";
             string outpath = pwd + "\\problems\\" + problemid + "\\" + name + ".out";
             string anspath = pwd + "\\data\\" + problemid + "\\" + name + ".out";
+            if (_access(anspath.c_str(), 0) == -1)
+            {
+                anspath = pwd + "\\data\\" + problemid + "\\" + name + ".ans";
+                if (_access(anspath.c_str(), 0) == -1)
+                {
+                    cout << "Please enter answer file suffix for the test point " << name << ": ";
+                    string ans_suffix;
+                    cin >> ans_suffix;
+                    anspath = pwd + "\\data\\" + problemid + "\\" + name + "." + ans_suffix;
+                    if (_access(anspath.c_str(), 0) == -1)
+                    {
+                        cout << "Unable to find the answer file for the test point " + name << endl;
+                        continue;
+                    }
+                }
+            }
             system(("judger " + quote(executableFile) + " " + quote(inpath) + " " + quote(outpath) + " " + quote(anspath)
                     + " " + quote(timeLimit) + " " + quote(memoryLimit) + " " + checker).c_str());
             ifstream res("judger.out");
