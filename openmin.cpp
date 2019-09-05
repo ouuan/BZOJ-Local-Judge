@@ -83,9 +83,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    system(quote(pwd + "\\data\\" + problemid + "\\" + minTest + ".in").c_str());
-    system(quote(pwd + "\\problems\\" + problemid + "\\" + minTest + ".out").c_str());
-    system(quote(pwd + "\\data\\" + problemid + "\\" + minTest + ".out").c_str());
+    system(("opentest " + problemid + " " + minTest).c_str());
 
     return 0;
 }
