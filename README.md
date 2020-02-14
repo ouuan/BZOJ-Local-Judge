@@ -1,6 +1,6 @@
 # BZOJ Local Judge
 
-BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库使用平台，目前正处于开（gu）发（gu）阶段。
+BZOJ Local Judge 计划为 OIer 提供一个完整、便捷的 BZOJ 离线题库使用平台，目前正处于弃坑阶段。（ouuan 已经开始主用 Linux，并且比起写一个 Linux 版，他更愿意给 [CP Editor](https://github.com/coder3101/cp-editor) 写类似的功能。）
 
 大约只会支持 Windows...
 
